@@ -4,7 +4,7 @@ import {
   ENTITY_CREATE,
 } from "../commonTypes";
 
-export function updateEntity(itemType, itemID, newItemAttributes) {
+export const updateEntity = (itemType, itemID, newItemAttributes) => {
   return {
     type: ENTITY_UPDATE,
     payload: {
@@ -15,7 +15,7 @@ export function updateEntity(itemType, itemID, newItemAttributes) {
   };
 }
 
-export function deleteEntity(itemType, itemID) {
+export const deleteEntity = (itemType, itemID) => {
   return {
     type: ENTITY_DELETE,
     payload: { 
@@ -25,7 +25,7 @@ export function deleteEntity(itemType, itemID) {
   };
 }
 
-export function createEntity(itemType, newItemAttributes) {
+export const createEntity = (itemType, newItemAttributes) => {
   return {
     type: ENTITY_CREATE,
     payload: {

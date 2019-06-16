@@ -6,7 +6,7 @@ import { DATA_LOADED, CLEAR_TYPE, CLEAR_SESSION } from '../commonTypes';
 
 const initialState = orm.getEmptyState();
 
-export function loadData(state, payload) {
+export const loadData = (state, payload) => {
   const session = orm.session(state);
 
   // const {

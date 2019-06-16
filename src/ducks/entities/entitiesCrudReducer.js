@@ -3,7 +3,7 @@ import { ENTITY_UPDATE, ENTITY_DELETE, ENTITY_CREATE } from "../commonTypes";
 
 import orm from "../orm";
 
-export function updateEntity(state, payload) {
+export const updateEntity = (state, payload) => {
   const { itemType, itemID, newItemAttributes } = payload;
 
   const session = orm.session(state);
@@ -22,7 +22,7 @@ export function updateEntity(state, payload) {
   return newState;
 }
 
-export function deleteEntity(state, payload) {
+export const deleteEntity = (state, payload) => {
   const { itemID, itemType } = payload;
 
   const session = orm.session(state);
@@ -41,7 +41,7 @@ export function deleteEntity(state, payload) {
   return newState;
 }
 
-export function createEntity(state, payload) {
+export const createEntity = (state, payload) => {
   const { itemType, newItemAttributes } = payload;
 
   const session = orm.session(state);
