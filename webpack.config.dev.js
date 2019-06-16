@@ -5,11 +5,16 @@ import HardSourceWebpackPlugin from "hard-source-webpack-plugin";
 
 import resolve from "./webpack.config.resolve";
 
+const GLOBALS = {
+  __DEV__: true
+};
+
 export default {
   resolve,
   devtool: "cheap-module-eval-source-map",
   entry: [
     "./src/webpack-public-path",
+    "@babel/polyfill",
     "react-hot-loader/patch",
     "webpack-hot-middleware/client?reload=true",
     path.resolve(__dirname, "src/index.js")
@@ -22,6 +27,7 @@ export default {
     filename: "bundle.js"
   },
   plugins: [
+    new webpack.DefinePlugin(GLOBALS),
     new HardSourceWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),

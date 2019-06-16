@@ -1,7 +1,7 @@
 {
-  "name": "react-bp",
+  "name": "magic-portfolio",
   "version": "1.0.0",
-  "description": "Slingshot into the stars with react-best-practices libraries pre-installed!",
+  "description": "Shop for Magic the Gathering cards at The Trading Post",
   "engines": {
     "node": ">=8",
     "npm": ">=3"
@@ -14,7 +14,7 @@
     "start": "concurrently -k -r -s first \"npm run test:watch\" \"npm run open:src\" \"npm run lint:watch\"",
     "open:src": "babel-node tools/srcServer.js",
     "open:dist": "babel-node tools/distServer.js",
-    "lint": "esw webpack.config.* src --color",
+    "lint": "esw src --color",
     "lint:watch": "npm run lint -- --watch",
     "clean-dist": "npm run remove-dist && mkdir dist",
     "remove-dist": "rimraf ./dist",
@@ -77,6 +77,7 @@
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^5.0.0",
+    "eslint-import-resolver-webpack": "^0.11.1",
     "eslint-plugin-import": "^2.17.3",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.13.0",

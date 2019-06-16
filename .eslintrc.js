@@ -1,7 +1,10 @@
+const path = require('path');
+require('@babel/register');
+
 module.exports = {
   parser: "babel-eslint",
   parserOptions: {
-    ecmaVersion: 7,
+    ecmaVersion: 10,
     sourceType: "module",
     allowImportExportEverywhere: true,
     codeFrame: false,
@@ -10,6 +13,7 @@ module.exports = {
       modules: true
     }
   },
+  plugins: [ "react" ],
   extends: ["airbnb", "prettier"],
   env: {
     browser: true,
@@ -20,12 +24,12 @@ module.exports = {
     "prefer-promise-reject-errors": ["off"],
     "react/jsx-filename-extension": ["off"],
     "react/prop-types": ["warn"],
-    "no-return-assign": ["off"]
+    "no-return-assign": ["off"], 
   },
   settings: {
     "import/resolver": {
-      webpack: {
-        config: "webpack.config.prod.js"
+      "webpack": {
+        config: path.resolve("./webpack.config.prod.js")
       }
     }
   }
