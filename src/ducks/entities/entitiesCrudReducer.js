@@ -1,8 +1,5 @@
-import {
-  ENTITY_UPDATE,
-  ENTITY_DELETE,
-  ENTITY_CREATE,
-} from "../commonTypes";
+import { createConditionalSliceReducer } from "../utils/reducerUtils";
+import { ENTITY_UPDATE, ENTITY_DELETE, ENTITY_CREATE } from "../commonTypes";
 
 import orm from "../orm";
 
@@ -55,13 +52,15 @@ export function createEntity(state, payload) {
   return session.state;
 }
 
-
 const entityHandlers = {
   [ENTITY_UPDATE]: updateEntity,
   [ENTITY_CREATE]: createEntity,
-  [ENTITY_DELETE]: deleteEntity,
+  [ENTITY_DELETE]: deleteEntity
 };
 
-const entityCrudFeatureReducer = createConditionalSliceReducer("entities", entityHandlers);
+const entityCrudFeatureReducer = createConditionalSliceReducer(
+  "entities",
+  entityHandlers
+);
 
 export default entityCrudFeatureReducer;

@@ -3,7 +3,7 @@ import reduxImmutableStateInvariant from "redux-immutable-state-invariant";
 import thunk from "redux-thunk";
 import { createBrowserHistory } from "history";
 import { connectRouter, routerMiddleware } from "connected-react-router";
-import createRootReducer from "../reducers";
+import rootReducer from "ducks/rootReducer";
 
 export const history = createBrowserHistory();
 const connectRouterHistory = connectRouter(history);
@@ -13,7 +13,7 @@ function configureStoreProd(initialState) {
   const middlewares = [thunk, reactRouterMiddleware];
 
   return createStore(
-    createRootReducer(history), // root reducer with router state
+    rootReducer, // root reducer with router state
     initialState,
     compose(applyMiddleware(...middlewares))
   );
@@ -31,7 +31,7 @@ function configureStoreDev(initialState) {
   const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // eslint-disable-line
   const store = createStore(
-    createRootReducer(history),
+    rootReducer,
     initialState,
     composeEnhancers(applyMiddleware(...middlewares))
   );
