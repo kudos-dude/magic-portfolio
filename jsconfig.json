@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
+    "allowSyntheticDefaultImports": false,
+    "baseUrl": "./",
+    "paths": {
+      "assets/*": ["assets/*"],
+      "ducks/*": ["src/ducks/*"],
+      "scenes/*": ["src/scenes/*"],
+      "shared/*": ["src/shared/*"],
+      "lib/*": ["lib/*"],
+      "utils/*": ["src/utils/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}
