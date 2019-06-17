@@ -1,52 +1,50 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
 import { getEntitiesSession } from 'ducks/entities/selectors';
 
-import setActions from 'ducks/Set';
+import { Grid } from 'semantic-ui-react';
+
 import cardActions from 'ducks/Card';
 
-const Browse = ({ loadSets, loadCards, sets, cards }) => {
+import CardList from './_/CardList';
+
+const Browse = ({ cards, getCards }) => {
   useEffect(() => {
-    loadSets.loadAllCardSets();
-    loadCards.loadAllCards();
-  }, []);
+    getCards.loadAllCards();
+  }, [])
 
   return (
     <>
-      <div>
-        Fuck you
-        {JSON.stringify(cards)}
-      </div>
+      {/* <AppHeader /> */}
+      <Grid>
+        <Grid.Column floated="left" width={5}>
+          {/* <Filter /> */}
+        </Grid.Column>
+        <Grid.Column centered columns={2} width={50}>
+          <CardList cards={cards} />
+        </Grid.Column>
+      </Grid>
     </>
   );
 };
+
 Browse.propTypes = {
-  loadSets: PropTypes.object.isRequired,
-  loadCards: PropTypes.object.isRequired,
-  sets: PropTypes.array.isRequired,
-  cards: PropTypes.array.isRequired,
-};
+
+}
 
 const mapState = state => {
   const session = getEntitiesSession(state);
 
-  const { Set, Card } = session;
+  const { Card } = session;
 
   return {
-    sets: Set.all().toRefArray(),
-    cards: Card.all().toRefArray(),
+    cards: Card.all().toModelArray(),
   };
 };
 
 const mapDispatch = dispatch => ({
-  loadSets: bindActionCreators(setActions, dispatch),
-  loadCards: bindActionCreators(cardActions, dispatch),
-});
+  getCards: bindActionCreators(cardActions, dispatch),
+})
 
-export default connect(
-  mapState,
-  mapDispatch,
-)(Browse);
+export default connect(mapState, mapDispatch)(Browse);
