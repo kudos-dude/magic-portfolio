@@ -37,8 +37,8 @@ function configureStoreDev(initialState) {
   );
 
   if (module.hot) {
-    module.hot.accept("../reducers", () => {
-      const nextRootReducer = require("../reducers").default; // eslint-disable-line
+    module.hot.accept("../ducks/rootReducer.js", () => {
+      const nextRootReducer = require("ducks/rootReducer").default; // eslint-disable-line
       store.replaceReducer(connectRouterHistory(nextRootReducer));
     });
   }

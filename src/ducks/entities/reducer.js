@@ -41,7 +41,7 @@ export const clearData = (state) => {
   return session.state;
 };
 
-export const clearType = (state, type) => {
+export const clearType = (state, { type }) => {
   const session = orm.session(state);
 
   const modelType = session[type];

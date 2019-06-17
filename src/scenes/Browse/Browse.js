@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getEntitiesSession } from 'ducks/entities/selectors';
@@ -8,20 +9,21 @@ import { Grid } from 'semantic-ui-react';
 import cardActions from 'ducks/Card';
 
 import CardList from './_/CardList';
+import Filter from './_/Filter';
 
 const Browse = ({ cards, getCards }) => {
   useEffect(() => {
-    getCards.loadAllCards();
+    getCards.loadCardsByPage(1);
   }, [])
 
   return (
     <>
       {/* <AppHeader /> */}
       <Grid>
-        <Grid.Column floated="left" width={5}>
-          {/* <Filter /> */}
+        <Grid.Column width={2}>
+          <Filter /> 
         </Grid.Column>
-        <Grid.Column centered columns={2} width={50}>
+        <Grid.Column centered columns={2}>
           <CardList cards={cards} />
         </Grid.Column>
       </Grid>
@@ -30,7 +32,8 @@ const Browse = ({ cards, getCards }) => {
 };
 
 Browse.propTypes = {
-
+  cards: PropTypes.array.isRequired,
+  getCards: PropTypes.object.isRequired,
 }
 
 const mapState = state => {
