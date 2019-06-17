@@ -28,7 +28,7 @@ export const loadCardsByPage = pageNumber => async dispatch => {
 };
 
 export const searchCardsByName = name => async dispatch => {
-  const response = await fetch(`${ALL_CARDS_URL}?q=${name}`);
+  const response = await fetch(`${ALL_CARDS_URL}/search?q=${name}`);
   const data = await response.json();
 
   dispatch(clearCards());
