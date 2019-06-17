@@ -25,7 +25,11 @@ module.exports = {
     "react/jsx-filename-extension": ["off"],
     "react/prop-types": ["warn"],
     "no-return-assign": ["off"], 
+
+
+    "no-console": 1,
     "import/no-extraneous-dependencies": 0,
+    "react/forbid-prop-types": 0,
   },
   settings: {
     "import/resolver": {

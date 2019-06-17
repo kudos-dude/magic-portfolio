@@ -9,13 +9,18 @@ const initialState = orm.getEmptyState();
 export const loadData = (state, payload) => {
   const session = orm.session(state);
 
-  // const {
-  // } = session;
+  const {
+    Set,
+    Card,
+  } = session;
 
-  // const { 
-  // } = payload;
+  const { 
+    sets = [],
+    cards = [],
+  } = payload;
 
-  // tools.forEach(tool => Tool.parse(tool));
+  sets.forEach(set => Set.parse(set));
+  cards.forEach(card => Card.parse(card));
 
   return session.state;
 }
@@ -23,11 +28,15 @@ export const loadData = (state, payload) => {
 export const clearData = (state) => {
   const session = orm.session(state);
 
-  // const {
-  // } = session;
+  const {
+    Set,
+    Card,
+  } = session;
 
-  // [
-  // ].forEach(modelType => modelType.all().toModelArray().forEach(model => model.delete()));
+  [
+    Set,
+    Card,
+  ].forEach(modelType => modelType.all().toModelArray().forEach(model => model.delete()));
 
   return session.state;
 };
@@ -35,9 +44,9 @@ export const clearData = (state) => {
 export const clearType = (state, type) => {
   const session = orm.session(state);
 
-  // const modelType = session[type];
+  const modelType = session[type];
 
-  // modelType.all().toModelArray().forEach(model => model.delete());
+  modelType.all().toModelArray().forEach(model => model.delete());
 
   return session.state;
 };
