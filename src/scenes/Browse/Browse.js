@@ -14,16 +14,16 @@ import Filter from './_/Filter';
 const Browse = ({ cards, getCards }) => {
   useEffect(() => {
     getCards.loadCardsByPage(1);
-  }, [])
+  }, []);
 
   return (
     <>
       {/* <AppHeader /> */}
       <Grid>
-        <Grid.Column width={2}>
-          <Filter /> 
+        <Grid.Column width={3}>
+          <Filter />
         </Grid.Column>
-        <Grid.Column centered columns={2}>
+        <Grid.Column centered="true" width={13}>
           <CardList cards={cards} />
         </Grid.Column>
       </Grid>
@@ -34,7 +34,7 @@ const Browse = ({ cards, getCards }) => {
 Browse.propTypes = {
   cards: PropTypes.array.isRequired,
   getCards: PropTypes.object.isRequired,
-}
+};
 
 const mapState = state => {
   const session = getEntitiesSession(state);
@@ -48,6 +48,9 @@ const mapState = state => {
 
 const mapDispatch = dispatch => ({
   getCards: bindActionCreators(cardActions, dispatch),
-})
+});
 
-export default connect(mapState, mapDispatch)(Browse);
+export default connect(
+  mapState,
+  mapDispatch,
+)(Browse);

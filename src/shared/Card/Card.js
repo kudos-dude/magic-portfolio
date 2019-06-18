@@ -9,7 +9,6 @@ const Card = ({ card }) => (
   <>
     <Image src={card.image_uris.normal} />
     {card.name}
-    
   </>
 )
 
