@@ -55,7 +55,7 @@ const SearchCards = ({ autoCompleteList, autoComplete, search }) => {
           />
           <datalist id="cardNames">
             {autoCompleteList.map(item => (
-              <option onSelect={setInputClearWait} value={item} key={item.id} />
+              <option onSelect={setInputClearWait} value={item} key={item} />
             ))}
           </datalist>
         </Grid.Column>

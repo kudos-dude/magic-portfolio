@@ -1,28 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { Grid, Pagination } from 'semantic-ui-react';
 
-import Card from 'shared/Card';
+import List from './_/List';
 
-const CardList = ({ cards }) => (
-  <Grid stackable width={11}>
-    {cards.map(card => (
-      <Grid.Column width={2} key={card.id}>
-        <Card card={card} />
-      </Grid.Column>
-    ))}
-    <Pagination
-      boundaryRange={0}
-      defaultActivePage={1}
-      ellipsisItem={null}
-      firstItem={null}
-      lastItem={null}
-      siblingRange={1}
-      totalPages={10}
-    />
-  </Grid>
-);
+const PAGE_SIZE = 24;
+
+const CardList = ({ cards }) => {
+  const [pageNumber, setActivePage] = useState(1);
+
+  return (
+    <Grid stackable width={11}>
+      {/* TODO: Pagination after search */}
+      {/* <List cards={cards.slice(pageNumber * PAGE_SIZE, pageNumber * PAGE_SIZE + PAGE_SIZE)} />
+      <Pagination
+        activePage={pageNumber}
+        onPageChange={(_, { activePage }) => {
+          setActivePage(activePage);
+        }}
+        boundaryRange={0}
+        siblingRange={1}
+        totalPages={cards.length % PAGE_SIZE}
+      /> */}
+      <List cards={cards} />
+    </Grid>
+  );
+};
 
 CardList.propTypes = {
   cards: PropTypes.array.isRequired,
