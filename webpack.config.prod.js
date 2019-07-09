@@ -7,6 +7,7 @@ import resolve from './webpack.config.resolve';
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
+  'process.env.APIG_URL': JSON.stringify('https://6al8x9c597.execute-api.us-east-1.amazonaws.com/dev/'),
   __DEV__: false,
 };
 

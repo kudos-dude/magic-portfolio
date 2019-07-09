@@ -1,4 +1,4 @@
-import { ENTITY_UPDATE, ENTITY_DELETE, ENTITY_CREATE } from '../commonTypes';
+import { ENTITY_UPDATE, ENTITY_DELETE, ENTITY_CREATE, DATA_LOADED } from '../commonTypes';
 
 const ITEM_TYPE = 'Deck';
 
@@ -56,4 +56,20 @@ export const deleteDeck = deckId => dispatch => {
     itemType: ENTITY_DELETE,
     itemID: deckId,
   });
+};
+
+// ---------------- Async actions -----------------------
+
+export const decksLoaded = decks => ({
+  type: DATA_LOADED,
+  payload: {
+    decks,
+  },
+});
+
+export const getAllDecks = () => async dispatch => {
+  const response = await fetch(`${process.env.APIG_URL}/decks`);
+  const data = await response.json();
+
+  dispatch(decksLoaded(data));
 };
