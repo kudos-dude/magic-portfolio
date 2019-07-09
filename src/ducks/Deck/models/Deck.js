@@ -1,11 +1,11 @@
-import { Model, attr, many } from 'redux-orm';
+import { Model, attr } from 'redux-orm';
 
 export default class Deck extends Model {
   static modelName = 'Deck';
 
   static fields = {
     id: attr(),
-    cards: many('Card')
+    cards: attr(),
   }
 
   static parse(deckData) {

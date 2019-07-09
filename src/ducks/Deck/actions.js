@@ -1,29 +1,27 @@
-import uuid from 'uuid/v1';
-
 import { ENTITY_UPDATE, ENTITY_DELETE, ENTITY_CREATE } from '../commonTypes';
 
 const ITEM_TYPE = 'Deck';
 
-export const addCard = deckWithNewCard => {
-  return {
+export const addCard = deckWithNewCard => dispatch => {
+  dispatch({
     type: ENTITY_UPDATE,
     payload: {
       itemType: ITEM_TYPE,
       itemID: deckWithNewCard.id,
       newItemAttributes: deckWithNewCard,
     },
-  };
+  });
 };
 
-export const removeCard = deckWithCardRemoved => {
-  return {
+export const removeCard = deckWithCardRemoved => dispatch => {
+  dispatch({
     type: ENTITY_UPDATE,
     payload: {
       itemType: ITEM_TYPE,
       itemID: deckWithCardRemoved.id,
       newItemAttributes: deckWithCardRemoved,
     },
-  };
+  });
 };
 
 export const createEmptyDeck = deckId => dispatch => {
@@ -33,13 +31,14 @@ export const createEmptyDeck = deckId => dispatch => {
       itemType: ITEM_TYPE,
       newItemAttributes: {
         id: deckId,
+        cards: [],
       },
     },
   });
 };
 
-export const clearDeck = emptyDeck => {
-  return {
+export const clearDeck = emptyDeck => dispatch => {
+  dispatch({
     type: ENTITY_UPDATE,
     payload: {
       itemType: ITEM_TYPE,
@@ -48,12 +47,12 @@ export const clearDeck = emptyDeck => {
         id: emptyDeck.id,
       },
     },
-  };
+  });
 };
 
-export const deleteDeck = deckId => {
-  return {
+export const deleteDeck = deckId => dispatch => {
+  dispatch({
     itemType: ENTITY_DELETE,
     itemID: deckId,
-  };
+  });
 };

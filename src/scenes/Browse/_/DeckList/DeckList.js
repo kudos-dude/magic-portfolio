@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import uuid from 'uuid/v1'; 
+
 import { getEntitiesSession } from 'ducks/entities/selectors';
 
 import { Grid } from 'semantic-ui-react';
@@ -11,7 +13,10 @@ import CardList from 'shared/CardList';
 const DeckList = ({ deckCards }) => {
   return (
     <Grid stackable width={3}>
-      <CardList cards={deckCards} />
+      <ul>
+        {/* Need unique key from uuid() because card id can be duplicated */}
+        {deckCards.map(card => <li key={uuid()}>{card.name}</li>)}
+      </ul>
     </Grid>
   );
 };
@@ -27,7 +32,7 @@ const mapState = state => {
   const { Deck } = session;
 
   return {
-    deckCards: currentDeckId ? Deck.withId(currentDeckId).cards.toModelArray() : [],
+    deckCards: currentDeckId ? Deck.withId(currentDeckId).cards: [],
   };
 };
 
