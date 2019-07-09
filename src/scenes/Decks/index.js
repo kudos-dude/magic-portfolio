@@ -1,1 +1,1 @@
-import { default } from './Decks';
+export { default } from './Decks';
