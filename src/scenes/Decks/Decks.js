@@ -6,6 +6,8 @@ import { bindActionCreators } from 'redux';
 import { getEntitiesSession } from 'ducks/entities/selectors';
 import rawDeckActions from 'ducks/Deck';
 
+// TODO: Get all decks that have been submitted by a user
+
 const Decks = ({ decks, deckActions }) => {
   useEffect(() => {
     deckActions.getAllDecks();
