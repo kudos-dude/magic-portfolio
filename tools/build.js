@@ -10,7 +10,7 @@ import {
 
 process.env.NODE_ENV = "production";
 
-console.log(chalkProcessing("Little gremlins be doin' they thang..."));
+console.log(chalkProcessing("Little gremlins doing it up..."));
 
 webpack(config).run((error, stats) => {
   if (error) {
@@ -32,7 +32,7 @@ webpack(config).run((error, stats) => {
   console.log(`Webpack stats: ${stats}`);
 
   console.log(
-    chalkSuccess("Your app done got built son! Sen' that shit to prod!")
+    chalkSuccess("Gremlins delivered on their promise!")
   );
 
   return 0;
