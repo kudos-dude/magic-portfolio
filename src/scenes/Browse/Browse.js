@@ -11,6 +11,8 @@ import cardActions from 'ducks/Card';
 import rawDeckActions from 'ducks/Deck';
 import rawGlobalDeckActions from 'ducks/global/currentDeck';
 
+import AppHeader from 'shared/AppHeader';
+
 import CardList from './_/CardList';
 import DeckList from './_/DeckList';
 import Filter from './_/Filter';
@@ -27,7 +29,7 @@ const Browse = ({ cards, getCards, currentDeckId, deckActions, globalDeckActions
 
   return (
     <>
-      {/* <AppHeader /> */}
+      <AppHeader />
       <Grid>
         <Grid.Column width={3}>
           <Filter />

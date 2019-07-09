@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 
 import { Grid } from 'semantic-ui-react';
 
-import DeckModels from 'ducks/Deck/models';
 import { getEntitiesSession } from 'ducks/entities/selectors';
 import rawDeckActions from 'ducks/Deck';
 

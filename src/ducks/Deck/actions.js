@@ -37,14 +37,15 @@ export const createEmptyDeck = deckId => dispatch => {
   });
 };
 
-export const clearDeck = emptyDeck => dispatch => {
+export const clearDeck = deck => dispatch => {
   dispatch({
     type: ENTITY_UPDATE,
     payload: {
       itemType: ITEM_TYPE,
-      itemID: emptyDeck.id,
+      itemID: deck.id,
       newItemAttributes: {
-        id: emptyDeck.id,
+        id: deck.id,
+        cards: [],
       },
     },
   });
