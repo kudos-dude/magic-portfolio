@@ -138,7 +138,13 @@
   "jest": {
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tools/assetsTransformer.js",
-      "\\.(css)$": "<rootDir>/tools/assetsTransformer.js"
+      "\\.(css)$": "<rootDir>/tools/assetsTransformer.js",
+      "^assets(.*)$": "<rootDir>/assets$1",
+      "^ducks(.*)$": "<rootDir>/src/ducks$1",
+      "^scenes(.*)$": "<rootDir>/src/scenes$1",
+      "^shared(.*)$": "<rootDir>/src/shared$1",
+      "^lib(.*)$": "<rootDir>/lib$1",
+      "^utils(.*)$": "<rootDir>/src/utils$1"
     },
     "setupFiles": [
       "raf/polyfill",
