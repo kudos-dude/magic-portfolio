@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Grid, Pagination } from 'semantic-ui-react';
 
-import List from './_/List';
+import List from 'shared/CardList';
 
 const PAGE_SIZE = 24;
 
